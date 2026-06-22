@@ -6,7 +6,6 @@ import { gsap } from "gsap"
 export default function Hero() {
   const subRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLAnchorElement>(null)
-  const glowRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const mm = gsap.matchMedia()
@@ -29,10 +28,6 @@ export default function Hero() {
         allow="autoplay 'none'"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
-      <div
-        ref={glowRef}
-        className="absolute left-1/2 top-1/3 -z-0 h-64 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[120px]"
-      />
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <h1 className="max-w-4xl text-5xl font-bold leading-tight tracking-tight text-white sm:text-7xl">
           <span className="text-glow">Building digital worlds</span>

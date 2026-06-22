@@ -16,16 +16,16 @@
 }
 
 .dark {
-  --background: 30 10% 8%;
-  --foreground: 35 20% 88%;
-  --muted: 30 8% 16%;
-  --muted-foreground: 30 10% 55%;
+  --background: 0 0% 5%;
+  --foreground: 0 0% 88%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 50%;
   --accent: 35 95% 55%;
-  --accent-foreground: 30 10% 8%;
+  --accent-foreground: 0 0% 5%;
   --secondary: 160 60% 40%;
   --secondary-foreground: 0 0% 100%;
-  --card: 30 8% 12%;
-  --card-border: 30 8% 20%;
+  --card: 0 0% 10%;
+  --card-border: 0 0% 18%;
   --glow: 35 95% 55%;
   --glow-subtle: 35 30% 20%;
 }
@@ -232,14 +232,4 @@ h1, h2, h3, h4 {
   border-radius: 3px;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 400px 400px;
-}
+
