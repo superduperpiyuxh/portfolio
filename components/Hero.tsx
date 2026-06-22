@@ -4,16 +4,15 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
 export default function Hero() {
-  const textRef = useRef<HTMLHeadingElement>(null)
   const subRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLAnchorElement>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const mm = gsap.matchMedia()
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-      tl.fromTo(textRef.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 })
-        .fromTo(subRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4")
+      tl.fromTo(subRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "+=0.6")
         .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
     })
     return () => mm.revert()
@@ -29,16 +28,17 @@ export default function Hero() {
         tabIndex={-1}
         allow="autoplay 'none'"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
+      <div
+        ref={glowRef}
+        className="absolute left-1/2 top-1/3 -z-0 h-64 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[120px]"
+      />
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <h1
-          ref={textRef}
-          className="max-w-4xl text-5xl font-bold leading-tight tracking-tight text-white sm:text-7xl"
-        >
-          Building digital experiences
+        <h1 className="max-w-4xl text-5xl font-bold leading-tight tracking-tight text-white sm:text-7xl">
+          <span className="text-glow">Building digital worlds</span>
           <br />
-          <span className="bg-gradient-to-r from-purple-400 to-pink-300 bg-clip-text text-transparent">
-            with code & creativity
+          <span className="bg-gradient-to-r from-amber-400 via-orange-300 to-rose-400 bg-clip-text text-transparent text-glow">
+            with code & wonder
           </span>
         </h1>
         <p ref={subRef} className="mt-6 max-w-xl text-lg text-zinc-300 sm:text-xl">
@@ -46,10 +46,10 @@ export default function Hero() {
         </p>
         <a
           ref={ctaRef}
-          href="#projects"
-          className="mt-10 rounded-full bg-white/10 px-8 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+          href="#about"
+          className="link-underline mt-10 rounded-full border border-amber-400/30 bg-white/5 px-8 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-amber-400/60 hover:bg-amber-400/10"
         >
-          View my work
+          Explore my work
         </a>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import ThemeToggle from "./ThemeToggle"
 
-const links = ["Home", "Projects", "Contact"]
+const links = ["Home", "About", "Projects", "Contact"]
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null)
