@@ -9,10 +9,14 @@ export default function Hero() {
   const ctaRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-    tl.fromTo(textRef.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 })
-      .fromTo(subRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4")
-      .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
+    const mm = gsap.matchMedia()
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+      tl.fromTo(textRef.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 })
+        .fromTo(subRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4")
+        .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
+    })
+    return () => mm.revert()
   }, [])
 
   return (
@@ -21,7 +25,9 @@ export default function Hero() {
         src="/castle"
         className="absolute inset-0 h-full w-full border-0"
         style={{ pointerEvents: "none" }}
-        title="Howl's Moving Castle"
+        title="Howl's Moving Castle animation playing in the background"
+        tabIndex={-1}
+        allow="autoplay 'none'"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
